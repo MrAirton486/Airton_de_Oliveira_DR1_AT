@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "GerenciamentoDeArtistas/1.0.0": {
+        "runtime": {
+          "GerenciamentoDeArtistas.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GerenciamentoDeArtistas/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
