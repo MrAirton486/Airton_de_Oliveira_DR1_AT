@@ -10,9 +10,12 @@ public class Artista{
 
     public DateTime DataNascimento { get; set; }
 
-
-
     public List<Musica> Musicas {get;set;}
+
+     public Artista()
+    {
+        Musicas = new List<Musica>();
+    }
 
     public void AdicionarMusica(Musica musicas) 
     {
@@ -23,6 +26,10 @@ public class Artista{
         this.Musicas.Add(musicas);
     }
 
-
-
+    public void RetirarMusica(Musica musica) 
+    {    
+        this.Musicas.Remove(musica);
+        
+        
+    }
 }

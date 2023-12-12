@@ -35,15 +35,19 @@ internal class Program
             case "1":
                 CadastrarArtista();
                 break;
+
             case "2":
                 CadastrarMusica();
                 break;
+
             case "3": 
                 ApagarArtista();
                 break;
+
             case "4":
                 ApagarMusica();
                 break;
+
             case "5":
                 ExibirArtistaEMusica();
                 break;
@@ -95,8 +99,14 @@ internal class Program
         Console.WriteLine("Digite o nome da musica");
         musica.Nome = Console.ReadLine();
 
+        Console.WriteLine("Digite o genero da música:");
+        musica.Genero = Console.ReadLine();
+
         manager.CadastrarMusica(musica);
-        artista.AdicionarMusica(musica);
+        artista.Musicas.Add(musica);
+        
+       // artista.AdicionarMusica(musica);
+       
 
     }
 
@@ -115,10 +125,15 @@ internal class Program
         Console.WriteLine($"Data de Nascimento {artista.DataNascimento}");
         Console.WriteLine($"================= Músicas do Artista ===================");
 
+        if(artista.Musicas == null){
+            Console.WriteLine("Músicas não encontradas");
+            return;
+        }
+
         foreach (var item in artista.Musicas)
         {
             Console.WriteLine($"Nome da música: {item.Nome}");
-           // Console.WriteLine($"Nome do Artista: {item.Artista1}");
+            Console.WriteLine($"Genero da música: {item.Genero}");
             Console.WriteLine("");
         }
 
@@ -139,18 +154,28 @@ internal class Program
     }
 
     private static void ApagarMusica(){
-        Console.WriteLine("Digite o nome da musica");
+
+        Console.WriteLine("Digite o nome do artista");
+        string nomeArtista = Console.ReadLine();
+        Artista artista1 = manager.Artistas.FirstOrDefault(x => x.Nome == nomeArtista);
+
+       Console.WriteLine("Digite o nome da musica");
         string nomeMusica = Console.ReadLine();
         Musica musica = manager.Musicas.FirstOrDefault(x => x.Nome == nomeMusica);
+        
 
-         if (musica == null) {
+        if (musica == null) {
+            Console.WriteLine("Não encontrei a música");
+            return;
+        }
+
+        if (artista1 == null) {
             Console.WriteLine("Não encontrei o artista");
             return;
         }
 
+        artista1.Musicas.Remove(musica);
         manager.RemoverMusica(musica);
-
-
 
     }
 
